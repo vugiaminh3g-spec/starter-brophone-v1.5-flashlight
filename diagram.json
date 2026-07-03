@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "Minh Vũ Gia",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 44.87,
+      "left": -93.92,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "board-ili9341-cap-touch",
+      "id": "lcd1",
+      "top": -191.24,
+      "left": -125.18,
+      "attrs": {}
+    },
+    { "type": "wokwi-potentiometer", "id": "batknob", "top": 250, "left": -100, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "flashLed",
+      "top": -243.6,
+      "left": 51.8,
+      "attrs": { "color": "white" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rFlash",
+      "top": 260,
+      "left": 70,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:VCC", "esp:3V3.1", "red", [] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [] ],
+    [ "lcd1:SCK", "esp:12", "green", [] ],
+    [ "lcd1:MOSI", "esp:11", "blue", [] ],
+    [ "lcd1:MISO", "esp:13", "purple", [] ],
+    [ "lcd1:CS", "esp:15", "orange", [] ],
+    [ "lcd1:D/C", "esp:2", "cyan", [] ],
+    [ "lcd1:SDA", "esp:10", "yellow", [] ],
+    [ "lcd1:SCL", "esp:8", "white", [] ],
+    [ "lcd1:LED", "esp:6", "gray", [] ],
+    [ "batknob:VCC", "esp:3V3.1", "red", [] ],
+    [ "batknob:GND", "esp:GND.2", "black", [] ],
+    [ "batknob:SIG", "esp:1", "orange", [] ],
+    [ "esp:7", "rFlash:1", "white", [] ],
+    [ "rFlash:2", "flashLed:A", "white", [] ],
+    [ "flashLed:C", "esp:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}
